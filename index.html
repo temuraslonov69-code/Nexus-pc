@@ -1,10 +1,19 @@
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS | Студия персональных компьютеров</title>
+    <title>NEXUS | Премиальные системы</title>
+    <!-- Подключение приятного минималистичного шрифта Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* Базовые настройки и плавный скролл */
+        html {
+            scroll-behavior: smooth;
+        }
+        
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -12,324 +21,459 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #000000;
-            color: #ffffff;
-            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+            background-color: #080808; /* Ультра-глубокий черный */
+            color: #E2E8F0; /* Мягкий белый для глаз */
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
+        /* Интерактивная шапка с эффектом матового стекла */
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            border-bottom: 1px solid #111111;
+            background-color: rgba(8, 8, 8, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.3s ease;
         }
 
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 0;
+            height: 80px;
         }
 
         .logo {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #FFFFFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
         }
 
         .nav-menu a {
-            color: #666666;
+            color: #8F90A6;
             text-decoration: none;
-            margin-left: 32px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.2s ease;
+            margin-left: 40px;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
-            color: #ffffff;
+        /* Интерактивное подчеркивание при наведении */
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #FFFFFF;
+            transition: width 0.3s ease;
         }
 
+        .nav-menu a:hover {
+            color: #FFFFFF;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Главный экран */
         .hero {
-            padding: 80px 0 40px 0;
-            text-align: left;
-            max-width: 600px;
+            padding: 120px 0 80px 0;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #8F90A6;
+            margin-bottom: 24px;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .hero h1 {
-            font-size: 32px;
-            font-weight: 500;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-            margin-bottom: 16px;
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: #FFFFFF;
         }
 
         .hero p {
-            font-size: 14px;
-            color: #666666;
+            font-size: 18px;
+            color: #8F90A6;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
         }
 
+        /* Интерактивная сетка товаров */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin: 40px 0 80px 0;
+            gap: 24px;
+            margin: 80px 0;
         }
 
         .pc-card {
-            background: #000000;
-            border: 1px solid #111111;
-            border-radius: 0px;
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             overflow: hidden;
-            transition: border-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            cursor: default;
         }
 
+        /* Эффект "левитации" при наведении */
         .pc-card:hover {
-            border-color: #333333;
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .pc-visual-code {
-            height: 160px;
-            background-color: #050505;
+        .pc-image-container {
+            height: 240px;
+            background-color: #0A0A0C;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 11px;
-            letter-spacing: 5px;
-            color: #222222;
-            border-bottom: 1px solid #111111;
+        }
+
+        /* Сюда встанут твои картинки. Сейчас тут заглушка */
+        .pc-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .pc-card:hover .pc-image-container img {
+            transform: scale(1.05); /* Легкий зум при наведении */
+        }
+
+        /* Эстетичная заглушка, если фото нет */
+        .no-photo-text {
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #333;
             text-transform: uppercase;
         }
 
         .pc-info {
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
+            padding: 32px 24px;
         }
 
         .pc-title {
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            color: #FFFFFF;
+            margin-bottom: 8px;
         }
 
-        .specs-list {
-            list-style: none;
+        .pc-desc {
+            font-size: 13px;
+            color: #8F90A6;
+            margin-bottom: 24px;
+        }
+
+        /* Характеристики в виде аккуратных тегов */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
             margin-bottom: 32px;
         }
 
-        .specs-list li {
-            font-size: 13px;
-            color: #666666;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed #111111;
-            padding-bottom: 4px;
+        .spec-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
         }
 
-        .specs-list li span {
-            color: #ffffff;
-            text-align: right;
+        .spec-label {
+            color: #666;
+            margin-bottom: 2px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-value {
+            color: #E2E8F0;
+            font-weight: 500;
         }
 
         .price-row {
-            margin-top: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 16px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .price-value {
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #FFFFFF;
         }
 
+        /* Тактильная кнопка заказа */
         .btn-buy {
             display: inline-block;
-            background: #ffffff;
+            background: #FFFFFF;
             color: #000000;
-            padding: 8px 16px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: opacity 0.2s ease;
-        }
-
-        .btn-buy:hover {
-            opacity: 0.8;
-        }
-
-        .order-section {
-            border-top: 1px solid #111111;
-            padding: 60px 0;
-            text-align: left;
-        }
-
-        .order-section h2 {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 12px;
-        }
-
-        .order-section p {
-            font-size: 14px;
-            color: #666666;
-            margin-bottom: 24px;
-            max-width: 500px;
-        }
-
-        .order-btn-tg {
-            display: inline-block;
-            border: 1px solid #ffffff;
-            color: #ffffff;
-            text-decoration: none;
             padding: 12px 24px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: background 0.2s, color 0.2s;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
         }
 
-        .order-btn-tg:hover {
-            background: #ffffff;
-            color: #000000;
+        /* Эффект механического нажатия */
+        .btn-buy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
         }
 
-        footer {
-            border-top: 1px solid #111111;
-            padding: 32px 0;
-            font-size: 11px;
-            color: #444444;
-            letter-spacing: 0.5px;
+        .btn-buy:active {
+            transform: translateY(2px); /* Пружинящий отклик вниз */
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
         }
 
+        /* Блок индивидуальной сборки */
+        .custom-build {
+            background: linear-gradient(145deg, #111111 0%, #080808 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            margin: 40px 0 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-build::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .custom-build h2 {
+            font-size: 32px;
+            color: #FFFFFF;
+            margin-bottom: 16px;
+        }
+
+        .custom-build p {
+            color: #8F90A6;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Адаптивность для телефона */
         @media (max-width: 768px) {
-            .catalog-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            .header-inner {
-                flex-direction: column;
-                gap: 16px;
-            }
-            .nav-menu a {
-                margin: 0 12px;
-            }
+            .hero h1 { font-size: 40px; }
+            .catalog-grid { grid-template-columns: 1fr; }
+            .nav-menu { display: none; } /* Скрываем меню на мобильном для чистоты */
+            .custom-build { padding: 40px 20px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo">NEXUS</div>
-                <div class="nav-menu">
-                    <a href="#" class="active">Каталог</a>
-                    <a href="#custom">Индивидуальный заказ</a>
-                </div>
-            </div>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <div class="logo-dot"></div>
+                NEXUS
+            </a>
+            <nav class="nav-menu">
+                <a href="#catalog">Системы</a>
+                <a href="#custom">Кастомная сборка</a>
+            </nav>
         </div>
     </header>
 
     <div class="container">
         <section class="hero">
-            <h1>Прогрессивные компьютеры для работы и игр.</h1>
-            <p>Строгий дизайн снаружи. Бескомпромиссная мощность внутри.</p>
+            <div class="hero-badge">Архитектура производительности</div>
+            <h1>Безупречная мощь.<br>Идеальная сборка.</h1>
+            <p>Выверенный кабель-менеджмент и максимальный FPS в строгом, минималистичном корпусе без лишних деталей.</p>
         </section>
-    </div>
 
-    <main class="container">
-        <div class="catalog-grid">
+        <main id="catalog" class="catalog-grid">
 
+            <!-- Система 1 -->
             <div class="pc-card">
-                <div class="pc-visual-code">MODEL: M-01 // FLOW</div>
+                <div class="pc-image-container">
+                    <!-- ЗАМЕНИ на: <img src="pc1.jpg" alt="Nexus M1"> -->
+                    <div class="no-photo-text">M-01 // FLOW</div>
+                </div>
                 <div class="pc-info">
-                    <div class="pc-title">NEXUS M1</div>
-                    <ul class="specs-list">
-                        <li>CPU <span>i5-12400F</span></li>
-                        <li>GPU <span>RTX 4060 8GB</span></li>
-                        <li>RAM <span>16GB DDR4</span></li>
-                        <li>SSD <span>1TB M.2 NVMe</span></li>
-                    </ul>
+                    <h3 class="pc-title">NEXUS M1</h3>
+                    <p class="pc-desc">Базовый перфекционизм для киберспорта.</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Процессор</div>
+                            <div class="spec-value">Core i5-12400F</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Видеокарта</div>
+                            <div class="spec-value">RTX 4060 8GB</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Оперативная</div>
+                            <div class="spec-value">16GB DDR4</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Накопитель</div>
+                            <div class="spec-value">1TB NVMe</div>
+                        </div>
+                    </div>
+
                     <div class="price-row">
-                        <div class="price-value">102 500 ₽</div>
+                        <div class="price-value">$1,150</div>
                         <a href="https://t.me/твой_логин" class="btn-buy" target="_blank">Заказать</a>
                     </div>
                 </div>
             </div>
 
+            <!-- Система 2 -->
             <div class="pc-card">
-                <div class="pc-visual-code">MODEL: A-02 // AQUA</div>
+                <div class="pc-image-container">
+                    <!-- ЗАМЕНИ на: <img src="pc2.jpg" alt="Nexus A2"> -->
+                    <div class="no-photo-text">A-02 // AQUA</div>
+                </div>
                 <div class="pc-info">
-                    <div class="pc-title">NEXUS A2</div>
-                    <ul class="specs-list">
-                        <li>CPU <span>Ryzen 5 5600X</span></li>
-                        <li>GPU <span>RTX 4060 Ti</span></li>
-                        <li>RAM <span>32GB DDR4</span></li>
-                        <li>SSD <span>1TB HighSpeed</span></li>
-                    </ul>
+                    <h3 class="pc-title">NEXUS A2</h3>
+                    <p class="pc-desc">Оптимальный баланс для 2K гейминга.</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Процессор</div>
+                            <div class="spec-value">Ryzen 5 5600X</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Видеокарта</div>
+                            <div class="spec-value">RTX 4060 Ti</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Оперативная</div>
+                            <div class="spec-value">32GB DDR4</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Накопитель</div>
+                            <div class="spec-value">1TB Fast SSD</div>
+                        </div>
+                    </div>
+
                     <div class="price-row">
-                        <div class="price-value">119 900 ₽</div>
-                        <a href="https://t.me/nexuspcbuild" class="btn-buy" target="_blank">Заказать</a>
+                        <div class="price-value">$1,350</div>
+                        <a href="https://t.me/твой_логин" class="btn-buy" target="_blank">Заказать</a>
                     </div>
                 </div>
             </div>
 
+            <!-- Система 3 -->
             <div class="pc-card">
-                <div class="pc-visual-code">MODEL: X-03 // APEX</div>
+                <div class="pc-image-container">
+                    <!-- ЗАМЕНИ на: <img src="pc3.jpg" alt="Nexus X3"> -->
+                    <div class="no-photo-text">X-03 // APEX</div>
+                </div>
                 <div class="pc-info">
-                    <div class="pc-title">NEXUS X3</div>
-                    <ul class="specs-list">
-                        <li>CPU <span>i7-14700F</span></li>
-                        <li>GPU <span>RTX 4070 Super</span></li>
-                        <li>RAM <span>32GB DDR5</span></li>
-                        <li>SSD <span>2TB PCI-e 4.0</span></li>
-                    </ul>
+                    <h3 class="pc-title">NEXUS X3</h3>
+                    <p class="pc-desc">Флагманские технологии без компромиссов.</p>
+                    
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <div class="spec-label">Процессор</div>
+                            <div class="spec-value">Core i7-14700F</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Видеокарта</div>
+                            <div class="spec-value">RTX 4070 Super</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Оперативная</div>
+                            <div class="spec-value">32GB DDR5</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Накопитель</div>
+                            <div class="spec-value">2TB PCIe 4.0</div>
+                        </div>
+                    </div>
+
                     <div class="price-row">
-                        <div class="price-value">206 800 ₽</div>
-                        <a href="https://t.me/nexuspcbuild" class="btn-buy" target="_blank">Заказать</a>
+                        <div class="price-value">$2,300</div>
+                        <a href="https://t.me/твой_логин" class="btn-buy" target="_blank">Заказать</a>
                     </div>
                 </div>
             </div>
 
-        </div>
+        </main>
 
-        <section class="order-section" id="custom">
-            <h2>Индивидуальное проектирование</h2>
-            <p>Если вам необходима особенная конфигурация под специфические задачи или рендеринг, мы соберем ее вручную.</p>
-            <a href="https://t.me/твой_логин" class="order-btn-tg" target="_blank">Связаться в Telegram</a>
+        <section id="custom" class="custom-build">
+            <h2>Проектирование под заказ</h2>
+            <p>Нужна тихая сборка для рендеринга или уникальный кастомный контур охлаждения? Обсудим каждую деталь и соберем идеальную систему.</p>
+            <a href="https://t.me/твой_логин" class="btn-buy" target="_blank">Связаться в Telegram</a>
         </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 NEXUS. Эстетика и производительность.</p>
-        </div>
-    </footer>
+    </div>
 
 </body>
 </html>
-
