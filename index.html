@@ -1,76 +1,43 @@
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS | Премиальные системы</title>
-    <!-- Подключение приятного минималистичного шрифта Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Базовые настройки и плавный скролл */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        html { scroll-behavior: smooth; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #080808; /* Ультра-глубокий черный */
-            color: #E2E8F0; /* Мягкий белый для глаз */
+            background-color: #080808;
+            color: #E2E8F0;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        /* Интерактивная шапка с эффектом матового стекла */
         header {
             background-color: rgba(8, 8, 8, 0.6);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: all 0.3s ease;
+            position: sticky; top: 0; z-index: 1000;
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
         }
 
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
 
         .logo {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #FFFFFF;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 20px; font-weight: 700; letter-spacing: 2px;
+            color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 10px;
         }
 
         .logo-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #FFFFFF;
-            border-radius: 50%;
+            width: 8px; height: 8px; background-color: #FFFFFF; border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
@@ -81,43 +48,20 @@
         }
 
         .nav-menu a {
-            color: #8F90A6;
-            text-decoration: none;
-            margin-left: 40px;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-            position: relative;
+            color: #8F90A6; text-decoration: none; margin-left: 40px;
+            font-size: 13px; font-weight: 500; letter-spacing: 1px;
+            transition: color 0.3s ease; position: relative;
         }
 
-        /* Интерактивное подчеркивание при наведении */
         .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: #FFFFFF;
-            transition: width 0.3s ease;
+            content: ''; position: absolute; width: 0; height: 1px;
+            bottom: -4px; left: 0; background-color: #FFFFFF; transition: width 0.3s ease;
         }
 
-        .nav-menu a:hover {
-            color: #FFFFFF;
-        }
+        .nav-menu a:hover { color: #FFFFFF; }
+        .nav-menu a:hover::after { width: 100%; }
 
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        /* Главный экран */
-        .hero {
-            padding: 120px 0 80px 0;
-            text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s ease forwards;
-        }
+        .hero { padding: 120px 0 80px 0; text-align: center; opacity: 0; animation: fadeIn 1s ease forwards; }
 
         @keyframes fadeIn {
             to { opacity: 1; transform: translateY(0); }
@@ -125,211 +69,80 @@
         }
 
         .hero-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 500;
-            color: #8F90A6;
-            margin-bottom: 24px;
-            background: rgba(255, 255, 255, 0.03);
+            display: inline-block; padding: 6px 16px; border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px; font-size: 12px; font-weight: 500; color: #8F90A6;
+            margin-bottom: 24px; background: rgba(255, 255, 255, 0.03);
         }
 
-        .hero h1 {
-            font-size: 56px;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            color: #FFFFFF;
-        }
+        .hero h1 { font-size: 56px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 24px; color: #FFFFFF; }
+        .hero p { font-size: 18px; color: #8F90A6; max-width: 600px; margin: 0 auto; font-weight: 300; }
 
-        .hero p {
-            font-size: 18px;
-            color: #8F90A6;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-
-        /* Интерактивная сетка товаров */
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin: 80px 0;
-        }
+        .catalog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 80px 0; }
 
         .pc-card {
-            background: #111111;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            cursor: default;
+            background: #111111; border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; cursor: default;
         }
 
-        /* Эффект "левитации" при наведении */
         .pc-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px); border-color: rgba(255, 255, 255, 0.2);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
-        .pc-image-container {
-            height: 240px;
-            background-color: #0A0A0C;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        .pc-image-container { height: 240px; background-color: #0A0A0C; overflow: hidden; }
+        .pc-image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .pc-card:hover .pc-image-container img { transform: scale(1.05); }
 
-        /* Сюда встанут твои картинки. Сейчас тут заглушка */
-        .pc-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .pc-info { padding: 32px 24px; }
+        .pc-title { font-size: 20px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px; }
+        .pc-desc { font-size: 13px; color: #8F90A6; margin-bottom: 16px; }
 
-        .pc-card:hover .pc-image-container img {
-            transform: scale(1.05); /* Легкий зум при наведении */
+        /* ИНТЕРАКТИВНЫЕ ХАРАКТЕРИСТИКИ (АККОРДЕОН) */
+        .specs-details summary {
+            list-style: none; cursor: pointer; font-size: 13px; font-weight: 500;
+            color: #8F90A6; display: inline-block; margin-bottom: 16px;
+            transition: color 0.2s ease; user-select: none;
         }
+        .specs-details summary::-webkit-details-marker { display: none; }
+        .specs-details summary:hover { color: #FFFFFF; }
+        .specs-details summary::after { content: ' ▾'; }
+        .specs-details[open] summary::after { content: ' ▴'; }
+        .specs-details[open] summary { color: #FFFFFF; margin-bottom: 12px; }
 
-        /* Эстетичная заглушка, если фото нет */
-        .no-photo-text {
-            font-size: 12px;
-            letter-spacing: 4px;
-            color: #333;
-            text-transform: uppercase;
-        }
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; animation: fadeIn 0.3s ease; }
+        
+        .spec-item { background: rgba(255, 255, 255, 0.03); padding: 8px 12px; border-radius: 8px; font-size: 12px; }
+        .spec-label { color: #666; margin-bottom: 2px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .spec-value { color: #E2E8F0; font-weight: 500; }
 
-        .pc-info {
-            padding: 32px 24px;
-        }
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .price-value { font-size: 24px; font-weight: 700; color: #FFFFFF; }
 
-        .pc-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #FFFFFF;
-            margin-bottom: 8px;
-        }
-
-        .pc-desc {
-            font-size: 13px;
-            color: #8F90A6;
-            margin-bottom: 24px;
-        }
-
-        /* Характеристики в виде аккуратных тегов */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .spec-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 12px;
-        }
-
-        .spec-label {
-            color: #666;
-            margin-bottom: 2px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .spec-value {
-            color: #E2E8F0;
-            font-weight: 500;
-        }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .price-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #FFFFFF;
-        }
-
-        /* Тактильная кнопка заказа */
         .btn-buy {
-            display: inline-block;
-            background: #FFFFFF;
-            color: #000000;
-            padding: 12px 24px;
-            font-size: 13px;
-            font-weight: 600;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+            display: inline-block; background: #FFFFFF; color: #000000; padding: 12px 24px;
+            font-size: 13px; font-weight: 600; border-radius: 8px; text-decoration: none;
+            transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
         }
+        .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2); }
+        .btn-buy:active { transform: translateY(2px); box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); }
 
-        /* Эффект механического нажатия */
-        .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-buy:active {
-            transform: translateY(2px); /* Пружинящий отклик вниз */
-            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
-        }
-
-        /* Блок индивидуальной сборки */
         .custom-build {
             background: linear-gradient(145deg, #111111 0%, #080808 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 60px;
-            text-align: center;
-            margin: 40px 0 100px 0;
-            position: relative;
-            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px;
+            padding: 60px; text-align: center; margin: 40px 0 100px 0; position: relative; overflow: hidden;
         }
-
         .custom-build::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; height: 1px;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
         }
+        .custom-build h2 { font-size: 32px; color: #FFFFFF; margin-bottom: 16px; }
+        .custom-build p { color: #8F90A6; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
 
-        .custom-build h2 {
-            font-size: 32px;
-            color: #FFFFFF;
-            margin-bottom: 16px;
-        }
-
-        .custom-build p {
-            color: #8F90A6;
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Адаптивность для телефона */
         @media (max-width: 768px) {
             .hero h1 { font-size: 40px; }
             .catalog-grid { grid-template-columns: 1fr; }
-            .nav-menu { display: none; } /* Скрываем меню на мобильном для чистоты */
+            .nav-menu { display: none; }
             .custom-build { padding: 40px 20px; }
         }
     </style>
@@ -361,31 +174,21 @@
             <!-- Система 1 -->
             <div class="pc-card">
                 <div class="pc-image-container">
-                    <!-- ЗАМЕНИ на: <img src="pc1.jpg" alt="Nexus M1"> -->
                     <img src="pc1.jpg" alt="Nexus M1">
                 </div>
                 <div class="pc-info">
                     <h3 class="pc-title">NEXUS M1</h3>
                     <p class="pc-desc">Базовый перфекционизм для киберспорта.</p>
                     
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">Процессор</div>
-                            <div class="spec-value">Core i5-12400</div>
+                    <details class="specs-details">
+                        <summary>Показать характеристики</summary>
+                        <div class="specs-grid">
+                            <div class="spec-item"><div class="spec-label">Процессор</div><div class="spec-value">Core i5-12400F</div></div>
+                            <div class="spec-item"><div class="spec-label">Видеокарта</div><div class="spec-value">RTX 4060 8GB</div></div>
+                            <div class="spec-item"><div class="spec-label">Оперативная</div><div class="spec-value">16GB DDR4</div></div>
+                            <div class="spec-item"><div class="spec-label">Накопитель</div><div class="spec-value">1TB NVMe</div></div>
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Видеокарта</div>
-                            <div class="spec-value">RTX 5060 8GB</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Оперативная</div>
-                            <div class="spec-value">16GB DDR4</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Накопитель</div>
-                            <div class="spec-value">1TB</div>
-                        </div>
-                    </div>
+                    </details>
 
                     <div class="price-row">
                         <div class="price-value">$1,150</div>
@@ -397,31 +200,21 @@
             <!-- Система 2 -->
             <div class="pc-card">
                 <div class="pc-image-container">
-                    <!-- ЗАМЕНИ на: <img src="pc2.jpg" alt="Nexus A2"> -->
                     <img src="pc2.jpg" alt="Nexus A2">
                 </div>
                 <div class="pc-info">
                     <h3 class="pc-title">NEXUS A2</h3>
                     <p class="pc-desc">Оптимальный баланс для 2K гейминга.</p>
                     
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">Процессор</div>
-                            <div class="spec-value">Ryzen 5 5600</div>
+                    <details class="specs-details">
+                        <summary>Показать характеристики</summary>
+                        <div class="specs-grid">
+                            <div class="spec-item"><div class="spec-label">Процессор</div><div class="spec-value">Ryzen 5 5600X</div></div>
+                            <div class="spec-item"><div class="spec-label">Видеокарта</div><div class="spec-value">RTX 4060 Ti</div></div>
+                            <div class="spec-item"><div class="spec-label">Оперативная</div><div class="spec-value">32GB DDR4</div></div>
+                            <div class="spec-item"><div class="spec-label">Накопитель</div><div class="spec-value">1TB Fast SSD</div></div>
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Видеокарта</div>
-                            <div class="spec-value">RTX 5060 Ti</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Оперативная</div>
-                            <div class="spec-value">32GB DDR4</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Накопитель</div>
-                            <div class="spec-value">1TB</div>
-                        </div>
-                    </div>
+                    </details>
 
                     <div class="price-row">
                         <div class="price-value">$1,350</div>
@@ -433,31 +226,21 @@
             <!-- Система 3 -->
             <div class="pc-card">
                 <div class="pc-image-container">
-                    <!-- ЗАМЕНИ на: <img src="pc3.jpg" alt="Nexus X3"> -->
                     <img src="pc3.jpg" alt="Nexus X3">
                 </div>
                 <div class="pc-info">
                     <h3 class="pc-title">NEXUS X3</h3>
                     <p class="pc-desc">Флагманские технологии без компромиссов.</p>
                     
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <div class="spec-label">Процессор</div>
-                            <div class="spec-value">Core i7-14700</div>
+                    <details class="specs-details">
+                        <summary>Показать характеристики</summary>
+                        <div class="specs-grid">
+                            <div class="spec-item"><div class="spec-label">Процессор</div><div class="spec-value">Core i7-14700F</div></div>
+                            <div class="spec-item"><div class="spec-label">Видеокарта</div><div class="spec-value">RTX 4070 Super</div></div>
+                            <div class="spec-item"><div class="spec-label">Оперативная</div><div class="spec-value">32GB DDR5</div></div>
+                            <div class="spec-item"><div class="spec-label">Накопитель</div><div class="spec-value">2TB PCIe 4.0</div></div>
                         </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Видеокарта</div>
-                            <div class="spec-value">RTX 5070 Super</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Оперативная</div>
-                            <div class="spec-value">32GB DDR5</div>
-                        </div>
-                        <div class="spec-item">
-                            <div class="spec-label">Накопитель</div>
-                            <div class="spec-value">2TB</div>
-                        </div>
-                    </div>
+                    </details>
 
                     <div class="price-row">
                         <div class="price-value">$2,300</div>
